@@ -2,7 +2,7 @@
     "name": "statikbe/craft-video-parser",
     "description": "Parse youtube & vimeo url's to make embeds",
     "type": "craft-plugin",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "keywords": [
         "craft",
         "cms",
@@ -19,6 +19,10 @@
         {
             "name": "Statik",
             "homepage": "https://www.statik.be"
+        },
+        {
+            "name": "Jan Henckens",
+            "homepage": "https://github.com/janhenckens/"
         }
     ],
     "require": {

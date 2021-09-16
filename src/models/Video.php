@@ -8,10 +8,15 @@ class Video extends Model
 {
     const TYPE_YOUTUBE = 'youtube';
     const TYPE_VIMEO = 'vimeo';
+    const BASE_YOUTUBE = "https://www.youtube.com/embed/";
+    const BASE_YOUTUBE_NOCOOKIES = "https://www.youtube-nocookie.com/embed/";
+    const BASE_VIMEO = "https://player.vimeo.com/video/";
+
 
     public $type;
     public $id;
     public $embedSrc;
+    public $noCookies = false;
 
     public function __construct($url)
     {
@@ -22,6 +27,9 @@ class Video extends Model
     {
         if (strpos($url, 'youtu')) {
             $this->type = Video::TYPE_YOUTUBE;
+            if(str_contains($url, 'nocookie')) {
+                $this->noCookies = true;
+            }
             preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
             $this->id = $match[1];
             $this->getEmbedSrc();
@@ -36,10 +44,14 @@ class Video extends Model
     private function getEmbedSrc()
     {
         if ($this->type === self::TYPE_YOUTUBE) {
-            $this->embedSrc = "https://www.youtube.com/embed/{$this->id}";
+            if($this->noCookies) {
+                $this->embedSrc = self::BASE_YOUTUBE_NOCOOKIES . $this->id;
+            } else {
+                $this->embedSrc = self::BASE_YOUTUBE . $this->id;
+            }
         }
         if ($this->type === self::TYPE_VIMEO) {
-            $this->embedSrc = "https://player.vimeo.com/video/{$this->id}";
+            $this->embedSrc = self::BASE_VIMEO . $this->id;
         }
     }
 
