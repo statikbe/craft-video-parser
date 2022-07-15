@@ -35,7 +35,7 @@ class Video extends Model
             if(str_contains($url, 'nocookie')) {
                 $this->noCookies = true;
             }
-            preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+            preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)|shorts/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
             $this->id = $match[1];
             $this->getEmbedSrc();
         } elseif (strpos($url, 'vimeo')) {
