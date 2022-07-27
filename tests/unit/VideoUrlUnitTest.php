@@ -44,7 +44,16 @@ class VideoUrlUnitTest extends Unit
         $this->assertEquals($id, $model->id);
     }
 
-    public function testYoutubeNoCookies() {
+    public function testYoutubePlaylistUrl()
+    {
+        $url = 'https://youtube.com/playlist?list=PLqoopX-6cUn22pDS5x6qX5Pa7SFSdmQ28';
+        $id = 'PLqoopX-6cUn22pDS5x6qX5Pa7SFSdmQ28';
+        $model = new Video($url);
+        $this->assertEquals($id, $model->id);
+    }
+
+    public function testYoutubeNoCookies()
+    {
         $url = "https://www.youtube-nocookie.com/watch?v=RD92FhbB7d4";
         $id = 'RD92FhbB7d4';
         $model = new Video($url);
