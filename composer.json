@@ -2,7 +2,7 @@
     "name": "statikbe/craft-video-parser",
     "description": "Parse youtube & vimeo url's to make embeds",
     "type": "craft-plugin",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "keywords": [
         "craft",
         "cms",
