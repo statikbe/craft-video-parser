@@ -18,6 +18,7 @@ class Video extends Model
     public $type;
     public $id;
     public $embedSrc;
+    public $extraParts = '';
     public $noCookies = false;
 
     public function __construct($url)
@@ -52,8 +53,15 @@ class Video extends Model
             }
         } elseif (strpos($url, 'vimeo')) {
             $this->type = Video::TYPE_VIMEO;
-            preg_match('(https?:\/\/(?:[\w]+\.)*vimeo\.com(?:[\/\w:]*(?:\/videos)?)?\/([0-9]+)[^\s]*)', $url, $match);
+            preg_match('/https?:\/\/(?:[\w]+\.)*vimeo\.com(?:[\/\w:]*?(?:\/videos)?)\/([\d]+(?:\/[\w\d]+))[^\s]*/i', $url, $match);
             $this->id = $match[1];
+
+            if (str_contains($this->id, '/')) {
+                $parts = explode('/', $this->id);
+                $this->id = array_shift($parts);
+                $this->extraParts = 'h=' . array_shift($parts);
+            }
+
             $this->getEmbedSrc();
         }
     }
