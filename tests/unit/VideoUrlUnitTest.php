@@ -67,6 +67,13 @@ class VideoUrlUnitTest extends Unit
         $id = '365607256';
         $model = new Video($url);
         $this->assertEquals($id, $model->id);
+
+        $url = 'https://vimeo.com/365607256/123456';
+        $id = '365607256';
+        $extraParts = 'h=123456';
+        $model = new Video($url);
+        $this->assertEquals($id, $model->id);
+        $this->assertEquals($id, $model->extraParts);
     }
 
 }
