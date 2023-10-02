@@ -73,7 +73,7 @@ class VideoUrlUnitTest extends Unit
         $extraParts = 'h=123456';
         $model = new Video($url);
         $this->assertEquals($id, $model->id);
-        $this->assertEquals($id, $model->extraParts);
+        $this->assertEquals($extraParts, $model->extraParts);
     }
 
 }

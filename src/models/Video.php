@@ -53,7 +53,7 @@ class Video extends Model
             }
         } elseif (strpos($url, 'vimeo')) {
             $this->type = Video::TYPE_VIMEO;
-            preg_match('/https?:\/\/(?:[\w]+\.)*vimeo\.com(?:[\/\w:]*?(?:\/videos)?)\/([\d]+(?:\/[\w\d]+))[^\s]*/i', $url, $match);
+            preg_match('/https?:\/\/(?:[\w]+\.)*vimeo\.com(?:[\/\w:]*?(?:\/videos)?)\/([\d]+(?:\/[\w\d]+)?)[^\s]*/i', $url, $match);
             $this->id = $match[1];
 
             if (str_contains($this->id, '/')) {
