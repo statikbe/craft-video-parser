@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.1.2 - 2023-10-02
+### Fixed
+- Fixed regression in vimeo link because i forgot to put an optional signifier in the regex
+
 ## 2.1.1 - 2023-09-15
 ### Fixed
 - Fixed an issue where Video could not properly parse Vimeo url formatted like 'https://vimeo.com/123456789/123456789'
