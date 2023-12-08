@@ -7,6 +7,7 @@ use craft\base\Model;
 class Video extends Model
 {
     const TYPE_YOUTUBE = 'youtube';
+    const TYPE_NOT_FOUND = 'not-found';
     const TYPE_YOUTUBE_PLAYLIST = 'youtube_playlist';
     const TYPE_VIMEO = 'vimeo';
     const BASE_YOUTUBE = "https://www.youtube.com/embed/";
@@ -26,44 +27,50 @@ class Video extends Model
         $this->parse($url);
     }
 
-    private function parse($url)
+    private function parse($url): void
     {
-        if (strpos($url, 'youtu')) {
-            $this->type = Video::TYPE_YOUTUBE;
-            if (!function_exists('str_contains')) {
-                function str_contains($haystack, $needle)
-                {
-                    return $needle !== '' && mb_strpos($haystack, $needle) !== false;
+        try {
+            if (strpos($url, 'youtu')) {
+                $this->type = Video::TYPE_YOUTUBE;
+                if (!function_exists('str_contains')) {
+                    function str_contains($haystack, $needle)
+                    {
+                        return $needle !== '' && mb_strpos($haystack, $needle) !== false;
+                    }
                 }
-            }
-            if (str_contains($url, 'nocookie')) {
-                $this->noCookies = true;
-            }
+                if (str_contains($url, 'nocookie')) {
+                    $this->noCookies = true;
+                }
 
-            if (str_contains($url, 'playlist')) {
-                $this->type = self::TYPE_YOUTUBE_PLAYLIST;
-                preg_match("/[&?]list=([^&]+)/i", $url, $match);
-                $this->id = $match[1];
+                if (str_contains($url, 'playlist')) {
+                    $this->type = self::TYPE_YOUTUBE_PLAYLIST;
+                    preg_match("/[&?]list=([^&]+)/i", $url, $match);
+                    $this->id = $match[1];
+                } else {
+                    preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)|shorts/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+                    $this->id = $match[1];
+                }
+
                 $this->getEmbedSrc();
-
-            } else {
-                preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)|shorts/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+            } elseif (strpos($url, 'vimeo')) {
+                $this->type = Video::TYPE_VIMEO;
+                preg_match('/https?:\/\/(?:[\w]+\.)*vimeo\.com(?:[\/\w:]*?(?:\/videos)?)\/([\d]+(?:\/[\w\d]+)?)[^\s]*/i', $url, $match);
                 $this->id = $match[1];
+
+                if (str_contains($this->id, '/')) {
+                    $parts = explode('/', $this->id);
+                    $this->id = array_shift($parts);
+                    $this->extraParts = 'h=' . array_shift($parts);
+                }
+
                 $this->getEmbedSrc();
             }
-        } elseif (strpos($url, 'vimeo')) {
-            $this->type = Video::TYPE_VIMEO;
-            preg_match('/https?:\/\/(?:[\w]+\.)*vimeo\.com(?:[\/\w:]*?(?:\/videos)?)\/([\d]+(?:\/[\w\d]+)?)[^\s]*/i', $url, $match);
-            $this->id = $match[1];
-
-            if (str_contains($this->id, '/')) {
-                $parts = explode('/', $this->id);
-                $this->id = array_shift($parts);
-                $this->extraParts = 'h=' . array_shift($parts);
-            }
-
-            $this->getEmbedSrc();
+        } catch (\Throwable $th) {
+            $this->type = self::TYPE_NOT_FOUND;
+            $this->id = '';
+            $this->embedSrc = '';
         }
+
     }
 
     private function getEmbedSrc()
