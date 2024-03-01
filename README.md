@@ -12,9 +12,10 @@ It returns an object with the following properties:
 - Type (youtube or vimeo)
 - ID
 - embedSrc (specific to the type)
+- extraParts (url parameters separated by an &)
 
 Then you can create your own embed as you see fit.
 
 ````
-<iframe src="{{ video.embedSrc }}" frameborder="0" width="500" height="300"></iframe>
+<iframe src="{{ video.embedSrc }}{{ video.extraParts ? '?'~video.extraParts }}" frameborder="0" width="500" height="300"></iframe>
 ````

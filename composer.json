@@ -2,16 +2,19 @@
   "name": "statikbe/craft-video-parser",
   "description": "Parse youtube & vimeo url's to make embeds",
   "type": "craft-plugin",
-  "version": "2.1.3",
+  "version": "2.2.0",
   "keywords": [
     "craft",
     "cms",
     "craftcms",
     "craft-plugin",
-    "video-embed"
+    "video-embed",
+    "video",
+    "youtube",
+    "vimeo"
   ],
   "support": {
-    "docs": "https://github.com/statikbe/craft-video-parser/blob/master/README.md",
+    "docs": "https://github.com/statikbe/craft-video-parser/blob/main/README.md",
     "issues": "https://github.com/statikbe/craft-video-parser/issues"
   },
   "license": "MIT",
