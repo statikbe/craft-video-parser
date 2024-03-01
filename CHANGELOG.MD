@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.2.0 - 2024-03-01
+### Added
+- Added support for Youtube url parameters ([#1](https://github.com/statikbe/craft-video-parser/issues/1))
+
+
 ## 2.1.3 - 2023-12-8
 ### Fixed
 - Fixed an issue where inputting an unparseable url would throw an error instead of returning null
