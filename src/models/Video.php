@@ -51,6 +51,13 @@ class Video extends Model
                     $this->id = $match[1];
                 }
 
+                if (str_contains($url, '&')) {
+                    $parts = explode('&', $url);
+                    array_shift($parts);
+                    $parts = preg_replace('/^t=(.*)s$/', "start=$1", $parts);
+                    $this->extraParts = implode("&", $parts);
+                }
+
                 $this->getEmbedSrc();
             } elseif (strpos($url, 'vimeo')) {
                 $this->type = Video::TYPE_VIMEO;
