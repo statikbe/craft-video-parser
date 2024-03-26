@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.0.0 - 2024-03-26
+### Added
+- Craft 5 support 🚀
+
 ## 2.2.0 - 2024-03-01
 ### Added
 - Added support for Youtube url parameters ([#1](https://github.com/statikbe/craft-video-parser/issues/1))

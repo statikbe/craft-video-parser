@@ -6,14 +6,14 @@ use craft\base\Model;
 
 class Video extends Model
 {
-    const TYPE_YOUTUBE = 'youtube';
-    const TYPE_NOT_FOUND = 'not-found';
-    const TYPE_YOUTUBE_PLAYLIST = 'youtube_playlist';
-    const TYPE_VIMEO = 'vimeo';
-    const BASE_YOUTUBE = "https://www.youtube.com/embed/";
-    const BASE_YOUTUBE_PLAYLIST = "https://www.youtube.com/embed/videoseries?list=";
-    const BASE_YOUTUBE_NOCOOKIES = "https://www.youtube-nocookie.com/embed/";
-    const BASE_VIMEO = "https://player.vimeo.com/video/";
+    public const TYPE_YOUTUBE = 'youtube';
+    public const TYPE_NOT_FOUND = 'not-found';
+    public const TYPE_YOUTUBE_PLAYLIST = 'youtube_playlist';
+    public const TYPE_VIMEO = 'vimeo';
+    public const BASE_YOUTUBE = "https://www.youtube.com/embed/";
+    public const BASE_YOUTUBE_PLAYLIST = "https://www.youtube.com/embed/videoseries?list=";
+    public const BASE_YOUTUBE_NOCOOKIES = "https://www.youtube-nocookie.com/embed/";
+    public const BASE_VIMEO = "https://player.vimeo.com/video/";
 
 
     public $type;
@@ -32,12 +32,6 @@ class Video extends Model
         try {
             if (strpos($url, 'youtu')) {
                 $this->type = Video::TYPE_YOUTUBE;
-                if (!function_exists('str_contains')) {
-                    function str_contains($haystack, $needle)
-                    {
-                        return $needle !== '' && mb_strpos($haystack, $needle) !== false;
-                    }
-                }
                 if (str_contains($url, 'nocookie')) {
                     $this->noCookies = true;
                 }
@@ -77,7 +71,6 @@ class Video extends Model
             $this->id = '';
             $this->embedSrc = '';
         }
-
     }
 
     private function getEmbedSrc()
