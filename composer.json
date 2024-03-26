@@ -47,7 +47,7 @@
   "require-dev": {
     "codeception/codeception": "^5.0.0",
     "vlucas/phpdotenv": "^5.0",
-    "codeception/module-yii2": "^1.0.0",
+    "codeception/module-yii2": "^1.0.1",
     "codeception/module-asserts": "^3.0.0",
     "craftcms/ecs": "dev-main",
     "craftcms/phpstan": "dev-main"

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "09359f8616377a554e1780cde38cf133",
+    "content-hash": "70b7aa90e88f73198f718f0c176a387f",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -6989,25 +6989,25 @@
         },
         {
             "name": "codeception/module-asserts",
-            "version": "2.0.1",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/module-asserts.git",
-                "reference": "313673c35de00ad337d3b5f895a1998695d3b537"
+                "reference": "1b6b150b30586c3614e7e5761b31834ed7968603"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/module-asserts/zipball/313673c35de00ad337d3b5f895a1998695d3b537",
-                "reference": "313673c35de00ad337d3b5f895a1998695d3b537",
+                "url": "https://api.github.com/repos/Codeception/module-asserts/zipball/1b6b150b30586c3614e7e5761b31834ed7968603",
+                "reference": "1b6b150b30586c3614e7e5761b31834ed7968603",
                 "shasum": ""
             },
             "require": {
-                "codeception/codeception": "^4.1 | *@dev",
+                "codeception/codeception": "*@dev",
                 "codeception/lib-asserts": "^2.0",
-                "php": "^7.4 | ^8.0"
+                "php": "^8.0"
             },
             "conflict": {
-                "codeception/codeception": "<4.1"
+                "codeception/codeception": "<5.0"
             },
             "type": "library",
             "autoload": {
@@ -7040,9 +7040,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/module-asserts/issues",
-                "source": "https://github.com/Codeception/module-asserts/tree/2.0.1"
+                "source": "https://github.com/Codeception/module-asserts/tree/3.0.0"
             },
-            "time": "2021-12-18T17:10:04+00:00"
+            "time": "2022-02-16T19:48:08+00:00"
         },
         {
             "name": "codeception/module-yii2",
