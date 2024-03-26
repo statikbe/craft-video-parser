@@ -32,12 +32,6 @@ class Video extends Model
         try {
             if (strpos($url, 'youtu')) {
                 $this->type = Video::TYPE_YOUTUBE;
-                if (!function_exists('str_contains')) {
-                    function str_contains($haystack, $needle)
-                    {
-                        return $needle !== '' && mb_strpos($haystack, $needle) !== false;
-                    }
-                }
                 if (str_contains($url, 'nocookie')) {
                     $this->noCookies = true;
                 }
