@@ -41,7 +41,7 @@ class Video extends Model
                     preg_match("/[&?]list=([^&]+)/i", $url, $match);
                     $this->id = $match[1];
                 } else {
-                    preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)|shorts/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
+                    preg_match('/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(?:-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|live\/|v\/)?)([\w\-]+)(\S+)?$/', $url, $match);
                     $this->id = $match[1];
                 }
 
