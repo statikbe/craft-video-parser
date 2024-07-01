@@ -45,7 +45,7 @@ class Video extends Model
                 $this->id = $match[1];
                 $this->getEmbedSrc();
             } else {
-                preg_match('/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(?:-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|live\/|v\/)?)([\w\-]+)(\S+)?$/', $url, $match);
+                preg_match('/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(?:-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|shorts\/|live\/|v\/)?)([\w\-]+)(\S+)?$/', $url, $match);
                 $this->id = $match[5];
                 $this->getEmbedSrc();
             }
