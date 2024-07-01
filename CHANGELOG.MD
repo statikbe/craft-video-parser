@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.2.1 - 2024-03-01
+### Fixed
+- Update Regex Youtube
+
 ## 2.2.0 - 2024-03-01
 ### Added
 - Added support for Youtube url parameters ([#1](https://github.com/statikbe/craft-video-parser/issues/1))
