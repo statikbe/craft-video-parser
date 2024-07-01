@@ -45,8 +45,8 @@ class Video extends Model
                 $this->id = $match[1];
                 $this->getEmbedSrc();
             } else {
-                preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)|shorts/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match);
-                $this->id = $match[1];
+                preg_match('/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(?:-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|live\/|v\/)?)([\w\-]+)(\S+)?$/', $url, $match);
+                $this->id = $match[5];
                 $this->getEmbedSrc();
             }
         } elseif (strpos($url, 'vimeo')) {
